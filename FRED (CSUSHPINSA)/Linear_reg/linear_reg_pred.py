@@ -6,7 +6,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
 # Load the FRED house price indexes dataset
-data = pd.read_csv('CSUSHPINSA.csv', parse_dates=True, index_col='DATE')
+data = pd.read_csv('../../CSUSHPINSA.csv', parse_dates=True, index_col='DATE')
 
 # Create a new column for the target variable (house price index)
 data['HPI_target'] = data['CSUSHPINSA'].shift(-1)

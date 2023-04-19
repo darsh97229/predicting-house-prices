@@ -1,0 +1,4 @@
+# Linear Regression Prediction
+In this code, we first load the FRED house price indexes dataset from the [FRED website](https://fred.stlouisfed.org/series/CSUSHPINSA), and create a new column for the target variable (house price index) by shifting the original column by one time step. We then drop rows with missing values and split the data into training and test sets using the train_test_split() function from scikit-learn.
+
+Next, we fit a linear regression model to the training data using the LinearRegression() class from scikit-learn, and make predictions on the test data using the predict() method. Finally, we evaluate the performance of the model using the root mean squared error (RMSE) metric, and plot the predicted vs. actual house price indexes using the matplotlib library.
