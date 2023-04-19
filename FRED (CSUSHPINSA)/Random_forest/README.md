@@ -1,0 +1,6 @@
+# Random Forest Prediction
+In this code, we define a parameter grid with a range of hyperparameters to test using a grid search with 5-fold cross-validation. The GridSearchCV class from scikit-learn's model_selection module is used for this purpose. We specify the random forest regressor as the estimator to use, and set the number of jobs to -1 to use all available CPU cores for parallel computation.
+
+We then fit the grid search object to the training data using the fit() method, which will perform a search over the hyperparameter grid and return the best set of hyperparameters found. We print the best hyperparameters to the console.
+
+Next, we fit a random forest regression model to the training data with the best hyperparameters found by the grid search, and make predictions on the test data using the predict() method. We evaluate the performance of the model using the root mean squared error (RMSE) metric, and plot the predicted vs. actual house price indexes using the matplotlib library.
