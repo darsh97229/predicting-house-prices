@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, LSTM, Dropout
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import EarlyStopping
+from keras.models import Sequential
+from keras.layers import Dense, LSTM, Dropout
+from keras.optimizers import Adam
+from keras.callbacks import EarlyStopping
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error
 
