@@ -1,17 +1,7 @@
-# Support Vector Regression Prediction
-In this code, we use the SVR class from scikit-learn's svm module to define an SVR model. We first standardize the training and test data using scikit-learn's StandardScaler class, which scales the data to have zero mean and unit variance.
-
-We then define a parameter grid with a range of hyperparameters to test using a grid search with 5-fold cross-validation. We specify the SVR estimator as the estimator to use, and set the number of jobs to -1 to use all available CPU cores for parallel computation.
-
-We fit the grid search object to the standardized training data using the fit() method, which will perform a search over the hyperparameter grid and return the best set of hyperparameters found. We print the best hyperparameters to the console.
-
-Next, we fit an SVR model to the standardized training data with the best hyperparameters found by the grid search, and make predictions on the standardized test data using the predict() method.
-
-```
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from sklearn.svm import SVR
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import GridSearchCV, train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -37,14 +27,16 @@ X_test_std = scaler.transform(X_test)
 
 # Define the parameter grid for hyperparameter tuning
 param_grid = {
-    'C': [0.01, 0.1, 1, 10, 100],
-    'epsilon': [0.01, 0.1, 1, 10, 100],
-    'gamma': ['scale', 'auto'] + list(np.logspace(-3, 3, 7)),
+    'learning_rate': [0.01, 0.1, 1],
+    'n_estimators': [50, 100, 200],
+    'max_depth': [2, 3, 4],
+    'subsample': [0.5, 0.8, 1.0],
+    'max_features': ['sqrt', 'log2', None],
 }
 
 # Perform a grid search to find the best hyperparameters
 grid_search = GridSearchCV(
-    SVR(),
+    GradientBoostingRegressor(),
     param_grid,
     cv=5,
     n_jobs=-1,
@@ -53,8 +45,8 @@ grid_search = GridSearchCV(
 grid_search.fit(X_train_std, y_train)
 print('Best hyperparameters:', grid_search.best_params_)
 
-# Fit an SVR model to the training data with the best hyperparameters
-model = SVR(**grid_search.best_params_)
+# Fit a gradient boosting regression model to the training data with the best hyperparameters
+model = GradientBoostingRegressor(**grid_search.best_params_)
 model.fit(X_train_std, y_train)
 
 # Make predictions on the test data
@@ -70,4 +62,3 @@ plt.plot(y_test.index, y_test.values, label='Actual')
 plt.plot(y_test.index, y_pred, label='Predicted')
 plt.legend()
 plt.show()
-```
