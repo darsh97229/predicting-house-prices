@@ -1,0 +1,4 @@
+# XGBoost Regression Prediction
+Used the XGBRegressor class from the XGBoost library to create an XGBoost regression model. We set several hyperparameters for the model, including the number of estimators, learning rate, max depth, and subsample rate. We then fit the model to the training data and made predictions on the test data. Finally, we evaluated the model using mean squared error and R-squared.
+### For tuning:
+used the GridSearchCV class from scikit-learn to search for the best hyperparameters for the XGBoost model. We defined a dictionary of hyperparameters to tune, including the number of estimators, learning rate, max depth, and subsample rate. We then used GridSearchCV to search over the hyperparameters and find the best combination using cross-validation. Finally, we used the best model to make predictions on the test data and evaluated its performance using mean squared error and R-squared.
