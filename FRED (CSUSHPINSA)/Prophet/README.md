@@ -1,4 +1,4 @@
-# Random Forest Prediction
+# Prophet Prediction
 Prophet is a time series forecasting model developed by Facebook. It is based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects.
 
 In this code, we first prepare the time series data in the format required by Prophet. We then split the data into training and testing sets and instantiate the Prophet model.
