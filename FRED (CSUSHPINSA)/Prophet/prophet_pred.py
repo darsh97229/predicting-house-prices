@@ -40,7 +40,8 @@ for mode in param_grid['seasonality_mode']:
             future = model.make_future_dataframe(periods=len(test_df))
             forecast = model.predict(future)
             fig = model.plot(forecast)
-            fig.show()
+            #fig.show()
+            fig.savefig("plot_"+str(mode)+"_"+str(prior_scale)+"_"+str(seasonality_scale)+".jpg")
             predictions = forecast['yhat'][-len(test_df):]
 
             # Evaluate the model
